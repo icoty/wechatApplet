@@ -1,8 +1,8 @@
 {
 	"client": "client/",
-	"svr": "server/",
+	"svr": "mvcServer/",
 	"miniprogramRoot": "client/",
-	"qcloudRoot": "server/",
+	"qcloudRoot": "mvcServer/",
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
@@ -14,7 +14,7 @@
 		"uglifyFileName": true
 	},
 	"appid": "wx552a0d4b18e3f9e7",
-	"projectname": "SIGN",
+	"projectname": "signSystem",
 	"compileType": "miniprogram",
 	"condition": {
 		"search": {
