@@ -25,13 +25,25 @@ async function createCourseQr(course_id) {
 					"path": "pages/authorization/authorization"
 				} 
 				postData = JSON.stringify(postData)
-				request({
+				var writeStream = fs.createWriteStream('qrData/' + course_id + '.png');
+				
+				var readStream = request({
 					method: 'POST',
 					url: 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=' + access_token,
 					body: postData
-				}).pipe(fs.createWriteStream('qrData/' + course_id + '.png'))
+				})
+				console.log(access_token)
+				readStream.pipe(writeStream)
+				readStream.on('end',function(response){
+					console.log("文件写入成功")
+					writeStream.end()
+				})
+				writeStream.on("finish",function(){
+				console.log("success")
+				})
 			} else {
 			//  error 异常处理TODO
+				console.log("error")
 				throw "ERR: cant create qr file"
 			}
 		}

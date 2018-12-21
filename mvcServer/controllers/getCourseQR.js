@@ -19,7 +19,6 @@ async function getCourseQR(ctx, next) {
 	console.log(body)
 	ctx.type = "image/png"
 	ctx.status = 200;
-
 	ctx.body = fs.createReadStream('qrData/' + body.course_id + '.png');
 
 } 
