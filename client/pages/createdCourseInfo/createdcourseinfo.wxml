@@ -1,7 +1,7 @@
 <!--pages/createdcourseinfo/createdcourseinfo.wxml-->
 <view class="weui-cells weui-cells_after-title" >
   <view class='briefInfo' style='flex-direction:column'>
-    <view class='courseInfo'>课程id:{{course_id}}</view>
+    <view class='courseInfo'>活动id:{{course_id}}</view>
     <view class='courseName'>{{course_name}} {{course_info}}</view>
     <view class='courseInfo'>已发起{{total}}次签到</view>
   </view>
@@ -20,11 +20,11 @@
     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
   </navigator>
   <navigator url="../showCourseQR/showCourseQR?course_id={{course_id}}&course_name={{course_name}}&course_info={{course_info}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-    <view class="weui-cell__bd">显示班级二维码</view>
+    <view class="weui-cell__bd">显示活动二维码</view>
     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
   </navigator>
   <navigator url="../changeCourseInfo/changecourseinfo?course_id={{course_id}}&task={{task}}&course_name={{course_name}}&course_info={{course_info}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-    <view class="weui-cell__bd">修改课程信息</view>
+    <view class="weui-cell__bd">修改活动信息</view>
     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
   </navigator>
   <navigator url="../getExcel/getExcel?course_id={{course_id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
@@ -33,5 +33,5 @@
   </navigator>
 </view>
   <button wx:if="{{level == 1}}" class="buttonView" style="margin-bottom: 0% " bindtap='deleteCourseConfirm' >
-    <text class="usermotto">删除课程</text>
+    <text class="usermotto">删除活动</text>
   </button>
