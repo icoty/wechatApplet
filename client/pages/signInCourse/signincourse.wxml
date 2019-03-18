@@ -4,14 +4,14 @@
   <view class='timeLocation'>
     <!-- <view class='hint'>当前时间地点信息</view>
     <view class='time'>{{time}}</view> 
-    <view class='location'>广东省广州市番禺区大学城中山大学东校区公教楼D栋</view> -->
+    <view class='location'>pku</view> -->
   </view>
 
   <!--课程信息-->
   <view class='courseInfo'>
-    <view class='hint'>当前课程</view>
+    <view class='hint'>当前活动</view>
     <view class='courseName'>{{course_name}}</view>
-    <view class='courseId'>课程id：{{course_id}}</view>
+    <view class='courseId'>活动id：{{course_id}}</view>
   </view>
   
   <!--签到剩余时间-->
