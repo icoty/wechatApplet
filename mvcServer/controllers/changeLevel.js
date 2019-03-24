@@ -20,7 +20,7 @@ async function changeLevel(ctx, next) {
     if (ctx.state.$wxInfo.loginState === 1) {
         const manager_id = ctx.state.$wxInfo.userinfo.openId
 
-        // 查看课程是否存在
+        // 查看活动是否存在
         let checkClassExist = await mysql('Courses').where({
             'course_id': body.course_id
         })

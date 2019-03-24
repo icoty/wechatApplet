@@ -32,31 +32,31 @@ var config = {
         //修改用户信息接口
         updateUserInfoUrl: `${host}/weapp/updateuser`,
         
-        //修改课程信息
+        //修改活动信息
         updateCourseInfoUrl: `${host}/weapp/changecourse`,
 
-        //获取用户所有课程列表
+        //获取用户所有活动列表
         getCourseListUrl: `${host}/weapp/getcourselist`,
         
-        //根据课程id查询课程简略信息
+        //根据活动id查询活动简略信息
         searchCourseUrl: `${host}/weapp/searchcourse`,
 
-        //根据课程id查询课程详细信息
+        //根据活动id查询活动详细信息
         searchCourseDetailUrl: `${host}/weapp/serchcoursedetail`,
 
-        //加入课程
+        //加入活动
         joinCourseUrl: `${host}/weapp/joincourse`,
 
-        //创建课程
+        //创建活动
         createCourseUrl: `${host}/weapp/createcourse`,
 
-        //根据课程id获取已加入课程的信息
+        //根据活动id获取已加入活动的信息
         getJointCourseRecordUrl: `${host}/weapp/getjointcoursedetail`,
 
-        //根据课程id获取可管理的课程详细信息
+        //根据活动id获取可管理的活动详细信息
         getCreatededCourseRecordUrl: `${host}/weapp/getcreatedcourserecord`,
 
-        //删除课程
+        //删除活动
         deleteCourseUrl: `${host}/weapp/deletecourse`,
 
         //发布签到
@@ -77,10 +77,10 @@ var config = {
         //修改成员权限
         changeLevelUrl: `${host}/weapp/changelevel`,
 
-        //获取课程二维码
+        //获取活动二维码
         getCourseQRUrl: `${host}/weapp/getCourseQR`,
 
-        //退出课程
+        //退出活动
         quitCourseUrl: `${host}/weapp/quitCourse`,
 
         //获取邮件

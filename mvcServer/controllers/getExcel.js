@@ -60,7 +60,7 @@ async function getExcel(ctx, next) {
     if (ctx.state.$wxInfo.loginState === 1) {
         const manager_id = ctx.state.$wxInfo.userinfo.openId
 
-        // 查看课程是否存在
+        // 查看活动是否存在
         let course = await mysql('Courses').where({
             'course_id': course_id
         })
@@ -93,7 +93,7 @@ async function getExcel(ctx, next) {
             return
         }
 
-        // 获取课程的成员（除去创建者）
+        // 获取活动的成员（除去创建者）
         let members = await mysql('Relation').where({
              'course_id': course_id
         }) .whereIn('level', [2, 3])
@@ -167,7 +167,7 @@ function makeMessage(toEmail, open_id) {
         to: toEmail,
 
         // Subject of the message 信息主题
-        subject: '课程签到情况',
+        subject: '活动签到情况',
 
         // plaintext body
         text: '由signSystem小程序生成',

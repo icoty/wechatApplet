@@ -7,7 +7,7 @@
     <view class='location'>pku</view> -->
   </view>
 
-  <!--课程信息-->
+  <!--活动信息-->
   <view class='courseInfo'>
     <view class='hint'>当前活动</view>
     <view class='courseName'>{{course_name}}</view>

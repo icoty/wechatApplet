@@ -1,5 +1,5 @@
 // pages/createnewcourse/createnewcourse.js
-// 创建课程的页面
+// 创建活动的页面
 var config = require('../../config')
 var util = require('../../utils/util.js')
 var qcloud = require('../../vendor/wafer2-client-sdk/index')
@@ -42,14 +42,14 @@ Page({
         course_info: e.detail.value
       })
   },
-  //提交课程创建信息
+  //提交活动创建信息
   submit: function () {
     if(this.data.course_name == "" ){
-      util.showModel('请求失败',"课程名不能为空")
+      util.showModel('请求失败',"活动名称不能为空")
     } else if(this.data.course_name.length > 20) {
-      util.showModel('请求失败', "课程名小于20个字符")      
+      util.showModel('请求失败', "活动名称小于20个字符")      
     } else if(this.data.course_info.length > 200) {
-      util.showModel('请求失败', "课程信息小于200个字符")
+      util.showModel('请求失败', "活动信息小于200个字符")
     } else {
       util.showBusy('创建中...')
       var that = this
@@ -66,7 +66,7 @@ Page({
           if (result.statusCode == 500) {
             var error
             if (result.error == 'ERR_COURSE_NAME' || result.error == 'ERR_COURSE_INFO') {
-              error = '课程信息格式有误'
+              error = '活动信息格式有误'
             }
             wx.hideToast()
             wx.showModal({
@@ -81,7 +81,7 @@ Page({
               }
             })
           } else {
-            util.showSuccess('创建课程成功') 
+            util.showSuccess('创建活动成功') 
             wx.switchTab({
               url: '../index/index',
             })

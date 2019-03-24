@@ -1,16 +1,16 @@
 <!--pages/createnewcourse/createnewcourse.wxml-->
 
  <view wx:>
-  <!--课程名字输入框-->
+  <!--活动名字输入框-->
   <view class="section">
-    <text class='banner'>课程名字</text>
-    <input class="input" placeholder="请输入课程名字..." auto-focus bindinput='nameChange'/>
+    <text class='banner'>活动名称</text>
+    <input class="input" placeholder="请输入活动名称..." auto-focus bindinput='nameChange'/>
   </view>
 
   <!--备注信息输入框-->
   <view class="section" style="margin-top: 8% ">
-    <text class='banner'>班级名字</text>
-    <input type="input" class="input" placeholder="请输入班级名字（选填）" auto-focus bindinput='infoChange'/>
+    <text class='banner'>活动开展班级</text>
+    <input type="input" class="input" placeholder="请输入班级名称（选填）" auto-focus bindinput='infoChange'/>
   </view>
 
   <!--提交按钮-->

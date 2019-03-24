@@ -4,7 +4,7 @@
     ERR_UNAUTHORIZED_OPERATION
 }
 - if (result.error == '2') {
-    error = '课程信息格式有误'
+    error = '活动信息格式有误'
     ERR_COURSE_NAME
     ERR_COURSE_INFO
 }
@@ -21,14 +21,14 @@
 
 ## createCourseUrl
 - if (result.error == '1') {
-    error = '课程信息格式有误'
+    error = '活动信息格式有误'
     ERR_COURSE_NAME
     ERR_COURSE_INFO
 }
 
 ## getCreatededCourseRecordUrl
 - if (result.data == '1') {
-    error = '该课程不存在或已删除'
+    error = '该活动不存在或已删除'
     ERR_INVALID_COURSE_ID
 }
 - if (result.data == '1') {
@@ -36,31 +36,31 @@
     ERR_UNAUTHORIZED_OPERATION
 }
 - if (result.data == '1') {
-    error = '您未加入该课程'
+    error = '您未加入该活动'
     ERR_NOT_IN_THIS_COURSE
 }
 
 ## deleteCourseUrl
 - if (result.data == '1') {
-    error = '该课程不存在或已删除'
+    error = '该活动不存在或已删除'
     ERR_INVALID_COURSE_ID
 }
 - if (result.data == '1') {
-    error = '您没有删除课程权限'
+    error = '您没有删除活动权限'
     ERR_UNAUTHORIZED_OPERATION
 }
 
 ## getJointCourseRecordUrl
 - if (result.data == '1') {
-    error = '该课程不存在或已删除'
+    error = '该活动不存在或已删除'
     ERR_INVALID_COURSE_ID
 }
 - if (result.data == '1') {
-    error = '您未加入该课程'
+    error = '您未加入该活动'
     ERR_NOT_IN_THIS_COURSE
 }
 - if (result.data == '1') {
-    error = '您已成为课程管理员'
+    error = '您已成为活动管理员'
     ERR_BECOME_MANAGER
 }
 
@@ -68,21 +68,21 @@
 
 ## searchCourseDetailUrl
 - if (result.data == '1') {
-    error = '该课程不存在或已删除'
+    error = '该活动不存在或已删除'
     ERR_INVALID_COURSE_ID
 }
 
 ## getSignInDetailUrl
 - if (result.data == '1') {
-    error = '该课程不存在或已删除'
+    error = '该活动不存在或已删除'
     ERR_INVALID_COURSE_ID
 }
 - if (result.data == '1') {
-    error = '您未加入该课程'
+    error = '您未加入该活动'
     ERR_NOT_IN_THIS_COURSE
 }
 - if (result.data == '1') {
-    error = '您已成为课程管理员'
+    error = '您已成为活动管理员'
     ERR_BECOME_MANAGER
 }
 - if (result.data == '1') {
@@ -95,15 +95,15 @@
 
 ## signInUrl
 - if (result.data == '1') {
-    error = '该课程不存在或已删除'
+    error = '该活动不存在或已删除'
     ERR_INVALID_COURSE_ID
 }
 - if (result.data == '1') {
-    error = '您未加入该课程'
+    error = '您未加入该活动'
     ERR_NOT_IN_THIS_COURSE
 }
 - if (result.data == '1') {
-    error = '您已成为课程管理员'
+    error = '您已成为活动管理员'
     ERR_BECOME_MANAGER
 }
 - if (result.data == '1') {
@@ -125,15 +125,15 @@
 
 ## submitSignInUrl
 - if (result.data == '1') {
-    error = '该课程不存在或已删除'
+    error = '该活动不存在或已删除'
     ERR_INVALID_COURSE_ID
 }
 - if (result.data == '1') {
-    error = '您未加入该课程'
+    error = '您未加入该活动'
     ERR_NOT_IN_THIS_COURSE
 }
 - if (result.data == '1') {
-    error = '您已不是课程管理员'
+    error = '您已不是活动管理员'
     ERR_UNAUTHORIZED_OPERATION
 }
 - if (result.data == '1') {
@@ -148,7 +148,7 @@
 
 ## changeLevelUrl
 - if (result.data == '1') {
-    error = '该课程不存在或已删除'
+    error = '该活动不存在或已删除'
     ERR_COURSE_NOT_FOUND
 }
 - if (result.data == '1') {
@@ -160,12 +160,12 @@
     ERR_MANAGER_AND_MEMBER_SAME
 }
 - if (result.data == '1') {
-    error = '该成员不存在或已退出课程'
+    error = '该成员不存在或已退出活动'
 }
 
 ## deleteMemberUrl
 - if (result.data == '1') {
-    error = '该课程不存在或已删除'
+    error = '该活动不存在或已删除'
     ERR_COURSE_NOT_FOUND
 }
 - if (result.data == '1') {
@@ -173,13 +173,13 @@
     ERR_COURSE_MAN_PERMISSION_DENIED
 }
 - if (result.data == '1') {
-    error = '该成员不存在或已退出课程'
+    error = '该成员不存在或已退出活动'
     ERR_USER_NOT_FOUND
 }
 
 ## getMembersListUrl
 - if (result.data == '1') {
-    error = '该课程不存在或已删除'
+    error = '该活动不存在或已删除'
     ERR_COURSE_NOT_FOUND
 }
 - if (result.data == '1') {

@@ -1,9 +1,9 @@
-//获取用户所有课程列表
+//获取用户所有活动列表
 getCourseListUrl: `${host}/weapp/getcourselist`,
 req.data: {
     open_id: "",
 },
-res.data:{[//已加入课程
+res.data:{[//已加入活动
     {
         course_name:  ,
         course_info: ,
@@ -15,7 +15,7 @@ res.data:{[//已加入课程
     ,
     {}
 ]},
-//根据课程id查询课程信息
+//根据活动id查询活动信息
 searchCourseUrl: `${host}/weapp/searchcourse`,
 req.data:{
     course_id:,
@@ -31,14 +31,14 @@ res.data:{
   task:
 },
 
-//加入课程
+//加入活动
 joinCourseUrl: `${host}/weapp/joincourse`,
 req.data: {
   course_id: that.data.course_id,
   open_id
 },
 res.data:{},
-//创建课程
+//创建活动
 createCourseUrl: `${host}/weapp/createcourse`,
 res.data:{
     course_name: "",
@@ -46,7 +46,7 @@ res.data:{
     open_id:,
 }
 res.data{}
-//根据课程id获取可管理的课程详细记录
+//根据活动id获取可管理的活动详细记录
 getCreatededCourseRecordUrl: `${host}/weapp/getcreatedcourserecord`,
 req.data: {
     course_id:,
@@ -63,7 +63,7 @@ res.data: {
     delay_time: //if task == 1
 },
 
-//删除课程
+//删除活动
 deleteCourseUrl: `${host}/weapp/deletecourse`,
 req.data: {
     course_id:,

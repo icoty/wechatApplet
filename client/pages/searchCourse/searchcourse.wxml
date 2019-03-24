@@ -11,7 +11,7 @@
       </view>
       <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
         <icon class="weui-icon-search" type="search" size="14"></icon>
-        <view class="weui-search-bar__text">输入课程id</view>
+        <view class="weui-search-bar__text">输入活动id</view>
       </label>
     </view>
     <view class="weui-search-bar__cancel-btn" bindtap="searchInput">确认</view>
@@ -19,13 +19,13 @@
   <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
     <view class="weui-cells searchbar-result" wx:if="{{search_flag==-1}}">
           <view class='briefInfo' style='flex-direction:column'>
-            <view class='courseName'>查无此课程</view>
+            <view class='courseName'>查无此活动</view>
           </view>
     </view>
     <view wx:if="{{search_flag==1}}" wx:for="{{search_course}}" wx:key="{{item.course_id}}" class="weui-cells weui-cells_after-title"> 
       <navigator url="../searchCourseInfo/searchcourseinfo?course_id={{item.course_id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class='briefInfo' style='flex-direction:column'>
-          <view class='courseInfo'>课程ID:{{item.course_id}}</view>
+          <view class='courseInfo'>活动ID:{{item.course_id}}</view>
           <view class='courseName'>{{item.course_name}} {{item.course_info}}</view>
         </view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
@@ -38,7 +38,7 @@
     <view class="weui-cells weui-cells_after-title">
 
       <button bindtap='creatCourse' class="weui-cell weui-cell_access" hover-class="weui-cell_active" style="border-radius:0rpx">
-        <view class="weui-cell__bd">创建课程</view>
+        <view class="weui-cell__bd">创建活动</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </button>
 

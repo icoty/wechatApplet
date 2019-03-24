@@ -1,8 +1,8 @@
 <!--pages/showCourseQR/showCourseQR.wxml-->
 <view>
-    <!--课程信息-->
+    <!--活动信息-->
     <view class='courseId' style='margin-top:8%;'>
-        <text>课程ID：</text>
+        <text>活动ID：</text>
         <text>{{course_id}}</text>
     </view>
     <view class='courseName'>

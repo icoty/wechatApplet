@@ -64,7 +64,7 @@ Page({
       that.getCourseList() 
     }
   },
-  //获取课程列表
+  //获取活动列表
   getCourseList: function () {
     var that = this
     var options = {

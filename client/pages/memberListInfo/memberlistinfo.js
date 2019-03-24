@@ -57,7 +57,7 @@ Page({
         if (result.statusCode == 500) {
           var error
           if (result.data == 'ERR_COURSE_NOT_FOUND') {
-            error = '该课程不存在或已删除'
+            error = '该活动不存在或已删除'
           }
           if (result.data == 'ERR_COURSE_MAN_PERMISSION_DENIED') {
             error = '您没有修改权限'

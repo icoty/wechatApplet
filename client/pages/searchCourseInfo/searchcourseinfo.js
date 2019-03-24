@@ -1,5 +1,5 @@
 // pages/courseinfo/courseinfo.js
-// 搜索得到课程详细信息的页面
+// 搜索得到活动详细信息的页面
 var config = require('../../config')
 var util = require('../../utils/util.js')
 var qcloud = require('../../vendor/wafer2-client-sdk/index')
@@ -58,7 +58,7 @@ Page({
         console.log(result)
         if (result.statusCode == 500) {
           if (result.data == "ERR_INVALID_COURSE_ID") {
-            var error = "该课程不存在或已删除"
+            var error = "该活动不存在或已删除"
           }
           wx.hideToast()
           wx.showModal({
@@ -101,7 +101,7 @@ Page({
     qcloud.request(postOptions)
   },
 
-  //提交加入课程
+  //提交加入活动
   joinCourse: function () {
     if(this.data.isjoin) return
     var that = this
@@ -116,7 +116,7 @@ Page({
         if (result.statusCode == 500) {
           var error
           if (result.data == "ERR_INVALID_COURSE_ID") {
-            error = '该课程不存在或已删除'
+            error = '该活动不存在或已删除'
           }
           wx.hideToast()
           wx.showModal({
@@ -137,7 +137,7 @@ Page({
         }
       },
       fail(error) {
-        util.showModel('加入课程失败', error)
+        util.showModel('加入活动失败', error)
       }
     }
     qcloud.request(postOptions)

@@ -21,34 +21,34 @@ router.post('/user', validationMiddleware, controllers.user.setInfo)
 router.post('/updateuser', validationMiddleware, controllers.updateuser.setInfo)
 
 
-// --- 课程管理 --- //
-// 用户添加课程
+// --- 活动管理 --- //
+// 用户添加活动
 router.post('/createcourse', validationMiddleware, controllers.createcourse.setInfo)
-// 用户修改课程
+// 用户修改活动
 router.post('/changecourse', validationMiddleware, controllers.changecourse.setInfo)
-// 用户删除课程
+// 用户删除活动
 router.post('/deletecourse', validationMiddleware, controllers.deletecourse.setInfo)
-// 管理员用户获取课程列表的成员
+// 管理员用户获取活动列表的成员
 router.get('/getMembersList', validationMiddleware, controllers.getMembersList)
 // 创建者改变权限
 router.post('/changelevel', validationMiddleware, controllers.changeLevel)
 // 管理员删除用户
 router.post('/deleteMember', validationMiddleware, controllers.deleteMember)
-// 用户退出课程
+// 用户退出活动
 router.post('/quitcourse', validationMiddleware, controllers.quitcourse.setInfo)
 
 
-// 用户获取课程列表
+// 用户获取活动列表
 router.get('/getcourselist', validationMiddleware, controllers.getcourselist.getInfo)
-// 用户获取创建课程的签到信息
+// 用户获取创建活动的签到信息
 router.post('/getcreatedcourserecord', validationMiddleware, controllers.getcreatedcourserecord.getInfo)
-// 用户获取加入课程的签到信息
+// 用户获取加入活动的签到信息
 router.post('/getjointcoursedetail', validationMiddleware, controllers.getjointcoursedetail.getInfo)
 
 
-// 用户通过course_id获取课程信息
+// 用户通过course_id获取活动信息
 router.post('/searchcourse', validationMiddleware, controllers.searchcourse.getInfo)
-// 用户通过course_id加入课程
+// 用户通过course_id加入活动
 router.post('/joincourse', validationMiddleware, controllers.joincourse.setInfo)
 
 

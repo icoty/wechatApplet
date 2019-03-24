@@ -56,13 +56,13 @@ Page({
               error = '无签到记录'
             }
             else if (result.data == 'ERR_COURSE_NOT_FOUND') {
-              error = '课程被移除'
+              error = '活动被移除'
             }
             else if (result.data == 'ERR_COURSE_MAN_PERMISSION_DENIED') {
               error = '无导出权限'
             }
             else if (result.data == 'ERR_NO_SIGNIN_MEMBER') {
-              error = '课程无成员'
+              error = '活动无成员'
             }
             util.showModel('导出失败', error)
           }

@@ -1,7 +1,7 @@
 // pages/createdcourseinfo/createdcourseinfo.js
 // 跳转参数
 // ../createdcourseinfo/createdcourseinfo?course_id={{item.course_id}}&task={{item.task}}&level={{item.level}}
-// 可管理课程的页面
+// 可管理活动的页面
 var config = require('../../config')
 var util = require('../../utils/util.js')
 var qcloud = require('../../vendor/wafer2-client-sdk/index')
@@ -42,7 +42,7 @@ Page({
   onShow: function(){
     this.getCreatedCourseInfo()
   },
-  //获取当前课程信息
+  //获取当前活动信息
   getCreatedCourseInfo: function () {
     var that = this
     var options = {
@@ -57,13 +57,13 @@ Page({
         if (result.statusCode == 500) {
           var error
           if (result.data == "ERR_INVALID_COURSE_ID") {
-            error = '该课程不存在或已删除'
+            error = '该活动不存在或已删除'
           }
           if (result.data = 'ERR_UNAUTHORIZED_OPERATION') {
             error = '您没有修改权限'
           }
           if (result.data = 'ERR_NOT_IN_THIS_COURSE') {
-            error = '您未加入该课程'
+            error = '您未加入该活动'
           }
           wx.hideToast()
           wx.showModal({
@@ -111,11 +111,11 @@ Page({
       method: `POST`,
       success(result) {
         console.log(result)
-        //课程不存在
+        //活动不存在
         if (result.statusCode == 500) {
           var error
           if (result.data == "ERR_INVALID_COURSE_ID") {
-            error = '该课程不存在或已删除'
+            error = '该活动不存在或已删除'
           }
           if (result.data = 'ERR_UNAUTHORIZED_OPERATION') {
             error = '您没有修改权限'
@@ -140,7 +140,7 @@ Page({
       },
       fail(error) {
         console.log(error)
-        util.showModel('请求失败', '该课程不存在')
+        util.showModel('请求失败', '该活动不存在')
         wx.switchTab({
           url: '../index/index',
         })
@@ -148,12 +148,12 @@ Page({
     }
     qcloud.request(options)
   },
-  //删除课程操作
+  //删除活动操作
   deleteCourseConfirm: function() {
     var that = this
     wx.showModal({  
-      title: '是否确定删除课程',  
-      content: '课程的所有信息将会被删除，包括所有学生签到记录，学生将会被移出课程',  
+      title: '是否确定删除活动',  
+      content: '活动的所有信息将会被删除，包括所有学生签到记录，学生将会被移出活动',  
       success: function(res) {  
         if (res.confirm) {  
           console.log('用户点击确定');

@@ -1,7 +1,7 @@
 <!--pages/signInfo/signinfo.wxml-->
 <view wx:if="{{task==0}}"class="body-view">
 <view class='briefInfo' style='flex-direction:column' >
-  <view class='courseInfo'>课程id:{{course_id}}</view>
+  <view class='courseInfo'>活动id:{{course_id}}</view>
   <view class='courseName'>{{course_name}} {{course_info}}</view>
 </view>
 
@@ -62,7 +62,7 @@
 <!--签到中页面-->
 <view wx:else>
 <view class='briefInfo' style='flex-direction:column' >
-  <view class='courseInfo'>课程id:{{course_id}}</view>
+  <view class='courseInfo'>活动id:{{course_id}}</view>
   <view class='courseName'>{{course_name}} {{course_info}}</view>
 </view>
 

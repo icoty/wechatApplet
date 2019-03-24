@@ -37,7 +37,7 @@ Page({
     })
     this.getCreatedCourseInfo()
   },
-  //获取课程信息
+  //获取活动信息
   getCreatedCourseInfo: function () {
     var that = this
     var options = {
@@ -55,7 +55,7 @@ Page({
             error = '您没有修改权限'
           }
           if (result.error == '2') {
-            error = '课程信息格式有误'
+            error = '活动信息格式有误'
           }
           wx.hideToast()
           wx.showModal({

@@ -79,13 +79,13 @@ Page({
         if (result.statusCode == 500) {
           var error
           if (result.data == 'ERR_INVALID_COURSE_ID') {
-            error = '该课程不存在或已删除'
+            error = '该活动不存在或已删除'
           }
           if (result.data == 'ERR_NOT_IN_THIS_COURSE') {
-            error = '您未加入该课程'
+            error = '您未加入该活动'
           }
           if (result.data == 'ERR_BECOME_MANAGER') {
-            error = '您已成为课程管理员'
+            error = '您已成为活动管理员'
           }
           if (result.data == 'ERR_SIGNIN_OVER') {
             error = '签到已经结束'
@@ -151,13 +151,13 @@ Page({
                 var error
                 var flag = 1
                 if (result.data == 'ERR_INVALID_COURSE_ID') {
-                  error = '该课程不存在或已删除'
+                  error = '该活动不存在或已删除'
                 }
                 if (result.data == 'ERR_NOT_IN_THIS_COURSE') {
-                  error = '您未加入该课程'
+                  error = '您未加入该活动'
                 }
                 if (result.data == 'ERR_BECOME_MANAGER') {
-                  error = '您已成为课程管理员'
+                  error = '您已成为活动管理员'
                 }
                 if (result.data == 'ERR_SIGNIN_OVER') {
                   error = '签到已经结束'
@@ -233,13 +233,13 @@ Page({
             var error
             var flag = 1
             if (result.data == 'ERR_INVALID_COURSE_ID') {
-              error = '该课程不存在或已删除'
+              error = '该活动不存在或已删除'
             }
             if (result.data == 'ERR_NOT_IN_THIS_COURSE') {
-              error = '您未加入该课程'
+              error = '您未加入该活动'
             }
             if (result.data == 'ERR_BECOME_MANAGER') {
-              error = '您已成为课程管理员'
+              error = '您已成为活动管理员'
             }
             if (result.data == 'ERR_SIGNIN_OVER') {
               error = '签到已经结束'

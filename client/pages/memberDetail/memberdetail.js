@@ -58,7 +58,7 @@ Page({
         if (result.statusCode == 500) {
           var error
           if (result.data == 'ERR_COURSE_NOT_FOUND') {
-            error = '该课程不存在或已删除'
+            error = '该活动不存在或已删除'
           }
           if (result.data == 'ERR_COURSE_MAN_PERMISSION_DENIED') {
             error = '您没有修改权限'
@@ -111,13 +111,13 @@ Page({
         if (result.statusCode == 500) {
           var error
           if (result.data == 'ERR_COURSE_NOT_FOUND') {
-            error = '该课程不存在或已删除'
+            error = '该活动不存在或已删除'
           }
           if (result.data == 'ERR_COURSE_MAN_PERMISSION_DENIED') {
             error = '您没有修改权限'
           }
           if (result.data == '1ERR_USER_NOT_FOUND') {
-            error = '该成员不存在或已退出课程'
+            error = '该成员不存在或已退出活动'
           }
           wx.hideToast()
           wx.showModal({

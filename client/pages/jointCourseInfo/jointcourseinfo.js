@@ -1,7 +1,7 @@
 // pages/jointcourseinfo/jointcourseinfo.js
 // 跳转参数
 // ../jointcourseinfo/jointcourseinfo?course_id={{item.course_id}}&task={{item.task}}
-// 已加入课程的页面
+// 已加入活动的页面
 var config = require('../../config')
 var util = require('../../utils/util.js')
 var qcloud = require('../../vendor/wafer2-client-sdk/index')
@@ -40,7 +40,7 @@ Page({
     })
     this.getJointCourseInfo()
   },
-  //获取课程信息
+  //获取活动信息
   getJointCourseInfo: function(){
     var that = this
     var options = {
@@ -55,13 +55,13 @@ Page({
         if (result.statusCode == 500) {
           var error
           if (result.data == "ERR_INVALID_COURSE_ID") {
-            error = '该课程不存在或已删除'
+            error = '该活动不存在或已删除'
           }
           if (result.data == 'ERR_NOT_IN_THIS_COURSE') {
-            error = '您未加入该课程'
+            error = '您未加入该活动'
           }
           if (result.data == 'ERR_BECOME_MANAGER') {
-            error = '您已成为课程管理员'
+            error = '您已成为活动管理员'
           }
           wx.hideToast()
           wx.showModal({
@@ -119,8 +119,8 @@ Page({
   quitCourseConfirm: function(){
     var that = this
     wx.showModal({
-      title: '是否确定退出课程',
-      content: '课程的所有签到记录将会被删除',
+      title: '是否确定退出活动',
+      content: '活动的所有签到记录将会被删除',
       success: function (res) {
         if (res.confirm) {
           console.log('用户点击确定');
@@ -145,13 +145,13 @@ Page({
         if (result.statusCode == 500) {
           var error
           if (result.data == "ERR_INVALID_COURSE_ID") {
-            error = '该课程不存在或已删除'
+            error = '该活动不存在或已删除'
           }
           if (result.data == 'ERR_NOT_IN_THIS_COURSE') {
-            error = '您未加入该课程'
+            error = '您未加入该活动'
           }
           if (result.data == 'ERR_BECOME_MANAGER') {
-            error = '您已成为课程管理员'
+            error = '您已成为活动管理员'
           }
           wx.hideToast()
           wx.showModal({

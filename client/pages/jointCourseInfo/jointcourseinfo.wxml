@@ -34,5 +34,5 @@
 </view>
 
 <button class="buttonView" style="margin-bottom: 0% " bindtap='quitCourseConfirm' >
-  <text class="usermotto">退出课程</text>
+  <text class="usermotto">退出活动</text>
 </button>

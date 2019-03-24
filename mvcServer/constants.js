@@ -1,6 +1,6 @@
 module.exports = {
     ERRORS: {
-        // 课程管理错误
+        // 活动管理错误
         ERR_COURSE_MAN_PERMISSION_DENIED: 'ERR_COURSE_MAN_PERMISSION_DENIED',
         ERR_MANAGER_AND_MEMBER_SAME: 'ERR_MANAGER_AND_MEMBER_SAME',
 
@@ -11,7 +11,7 @@ module.exports = {
         ERR_WHEN_SET_USER_ID: 'ERR_WHEN_SET_USER_ID',
         ERR_WHEN_SET_USER_NAME: 'ERR_WHEN_SET_USER_NAME',
 
-        // 设置课程信息出错
+        // 设置活动信息出错
         ERR_COURSE_NAME: 'ERR_COURSE_NAME',
         ERR_COURSE_INFO: 'ERR_COURSE_INFO',
         ERR_INVALID_COURSE_ID: 'ERR_INVALID_COURSE_ID',

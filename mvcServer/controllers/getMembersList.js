@@ -3,7 +3,7 @@ const { message: { checkSignature } } = require('../qcloud')
 const { ERRORS } = require('../constants')
 
 /**
- * 响应 GET 课程成员列表的请求
+ * 响应 GET 活动成员列表的请求
  */
 async function getMembersList(ctx, next) {
     const course_id = ctx.query.course_id
@@ -12,7 +12,7 @@ async function getMembersList(ctx, next) {
     if (ctx.state.$wxInfo.loginState === 1) {
         const manager_id = ctx.state.$wxInfo.userinfo.openId
 
-        // 查看课程是否存在
+        // 查看活动是否存在
         let checkClassExist = await mysql('Courses').where({
             'course_id': course_id
         })
