@@ -27,8 +27,8 @@
   <view class='briefInfo' style='flex-direction:column'>
     <view class='courseInfo'>签到纪录</view>
     <view wx:for="{{record}}" wx:key="{{item.index}}">
-      <view class='courseInfo' wx:if="{{item.is_sign == 0}}">第{{item.index+1}}节课缺勤</view>
-      <view class='courseInfo' wx:if="{{item.is_sign == 1}}">第{{item.index+1}}节课签到成功{{item.time}}</view>
+      <view class='courseInfo' wx:if="{{item.is_sign == 0}}">第{{item.index+1}}次活动缺勤</view>
+      <view class='courseInfo' wx:if="{{item.is_sign == 1}}">第{{item.index+1}}次活动签到成功{{item.time}}</view>
     </view>
   </view>
 </view>

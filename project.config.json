@@ -14,7 +14,7 @@
 		"uglifyFileName": true
 	},
 	"appid": "wx552a0d4b18e3f9e7",
-	"projectname": "signSystem",
+	"projectname": "签到系统",
 	"compileType": "miniprogram",
 	"condition": {
 		"search": {

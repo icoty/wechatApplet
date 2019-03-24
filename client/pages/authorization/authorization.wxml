@@ -2,7 +2,7 @@
 <view class="my_view">
   <view class="my_view first">
     <image class="my_logo" src='../../image/sysuIcon.png'/>
-    <text class="my_header" wx:if="{{!userDenyAuth}}">签到SoEasy</text>
+    <text class="my_header" wx:if="{{!userDenyAuth}}">签到系统</text>
     <text class="my_header" wx:if="{{userDenyAuth}}">温馨提示</text>
     <text class="my_Subtitle" wx:if="{{code}}">点击登陆提交用户信息</text>
     <text class="my_Subtitle" wx:if="{{!code && !userDenyAuth}}">授权中...</text>

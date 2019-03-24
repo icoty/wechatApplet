@@ -170,13 +170,13 @@ function makeMessage(toEmail, open_id) {
         subject: '活动签到情况',
 
         // plaintext body
-        text: '由signSystem小程序生成',
+        text: '由签到系统小程序生成',
 
         // Html body
-        html: '<p><b>signSystem</b></p>',
+        html: '<p><b>签到系统</b></p>',
 
         // Apple Watch specific HTML body 苹果手表指定HTML格式
-        watchHtml: '<b>signSystem</b>',
+        watchHtml: '<b>签到系统</b>',
 
         // An array of attachments 附件
         attachments: [
