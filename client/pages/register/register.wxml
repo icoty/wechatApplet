@@ -1,0 +1,63 @@
+<!--pages/getinto.wxml-->
+<view class='container'>
+  <view class='login-from'>
+    <view class="inputView">
+        <image class='namelmage' src='../../images/index.png'></image>
+        <label class='loginLab'>学号</label>
+        <input class='inputText' bindinput='inputNumber' placeholder='请输入学号' name='usernumber' type='text'/>
+        <view class='line'></view>
+      
+        <image class='namelmage' src='../../images/index.png'></image>
+        <label class='loginLab'>姓名</label>
+        <input class='inputText' bindinput='inputName' placeholder='请输入姓名' name='username'/>
+        <view class='line'></view>
+
+        <view class="section">
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <image class='namelmage' src='../../images/index.png'></image>
+          <label class='loginLab'>性别</label>
+          <input class='inputText' bindinput='inputGender' placeholder="{{array[index]}}" name='usergender'/>
+          <view class='line'></view>
+          </picker>
+        </view>
+
+        <image class='namelmage' src='../../images/index.png'></image>
+        <label class='loginLab'>专业</label>
+        <input class='inputText' bindinput='inputMajor' placeholder='请选择专业' name='usermajor'/>
+        <view class='line'></view>
+        
+        <image class='namelmage' src='../../images/index.png'></image>
+        <label class='loginLab'>班级</label>
+        <input class='inputText' bindinput='inputClass' placeholder='请选择班级' name='userclass'/>
+        <view class='line'></view>
+
+        <image class='keylmage' src='../../images/index.png'></image>
+        <label class='loginLab'>Email</label>
+        <input class='inputText' bindinput='inputEmail' placeholder='请输入邮箱' name='useremail'/>
+        <view class='line'></view>
+
+      <view class="inputView">
+        <image class='keylmage' src='../../images/index.png'></image>
+        <label class='loginLab'>密码</label>
+        <input class='inputText'password="true" bindinput='inputPwd1' placeholder='请输入密码' name='password1'/>
+        <view class='line'></view>
+      </view>
+
+      <view class="inputView">
+        <image class='keylmage' src='../../images/index.png'></image>
+        <label class='loginLab'>确认密码</label>
+        <input class='inputText'password="true" bindinput='inputPwd2' placeholder='请再次输入密码' name='password2'/>
+      </view>
+    </view>
+
+    <view class="register">
+      <button class='regbtn' type='primary ' size='{{primarysize }}'loading='{{loading}}' plain="{{plain}}"bindtap="reg">注册</button>
+      <view class='info'>{{result}}</view>
+    </view>
+
+    <view class="login">
+       <button class='loginbtn' type='primary ' size='{{primarysize }}'loading='{{loading}}' plain="{{plain}}"bindtap="log">已有账号，去登陆</button>
+    </view>
+
+  </view>
+</view>

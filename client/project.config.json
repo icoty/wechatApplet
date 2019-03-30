@@ -11,9 +11,9 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.98",
+	"libVersion": "2.6.4",
 	"appid": "wx552a0d4b18e3f9e7",
-	"projectname": "SIGN",
+	"projectname": "signSystem",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
@@ -38,13 +38,13 @@
 				{
 					"id": 0,
 					"name": "1",
-					"pathName": "pages/home/home",
+					//"pathName": "pages/home/home",
 					"query": ""
 				},
 				{
 					"id": -1,
 					"name": "2",
-					"pathName": "pages/jointCourseInfo/jointcourseinfo",
+					//"pathName": "pages/jointCourseInfo/jointcourseinfo",
 					"query": ""
 				}
 			]

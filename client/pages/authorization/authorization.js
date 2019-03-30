@@ -1,7 +1,7 @@
 // pages/authorization/authorization.js
 var config = require('../../config')
-var util = require('../../utils/util.js')
-var qcloud = require('../../vendor/wafer2-client-sdk/index')
+//var util = require('../../utils/util.js')
+//var qcloud = require('../../vendor/wafer2-client-sdk/index')
 
 // 获取全局变量
 const app = getApp()
@@ -33,10 +33,11 @@ Page({
         encryptedData: e.detail.encryptedData,
         iv: e.detail.iv
       }
+      console.log("e:"+e)
       qcloud.requestLogin({
         loginParams,
         success(result) {
-          console.log(result)
+          console.log("result:" + result)
 
           app.globalData.userInfo = result.userinfo
           app.globalData.userInfo['isSignUp'] = result.user.isSignUp
@@ -73,7 +74,6 @@ Page({
       wx.switchTab({
         url: '../index/index',
       })
-
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况

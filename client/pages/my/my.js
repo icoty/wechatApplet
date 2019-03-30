@@ -48,8 +48,8 @@ Page({
     var that = this
 
     if (app.globalData.userInfo) {
-      that.getCourseList() 
+      that.getCourseList()
     }
   }
 
-  })
+})

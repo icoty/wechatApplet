@@ -21,16 +21,16 @@ var config = {
         host,
 
         // 登录地址，用于建立会话
-        loginUrl: `${host}/weapp/login`,
+        loginUrl: `${host}/login`,
 
         // 测试的请求地址，用于测试会话
-        requestUrl: `${host}/weapp/user`,
+        userAlreadyExistUrl: `${host}/useralreadyexist`,
 
         //注册用户接口
-        setUserInfoUrl: `${host}/weapp/user`,
+        registerUrl: `${host}/register`,
 
         //修改用户信息接口
-        updateUserInfoUrl: `${host}/weapp/updateuser`,
+        uploadCodeUrl: `${host}/uploadcode`,
         
         //修改活动信息
         updateCourseInfoUrl: `${host}/weapp/changecourse`,
