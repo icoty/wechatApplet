@@ -23,13 +23,13 @@ var config = {
         // 登录地址，用于建立会话
         loginUrl: `${host}/login`,
 
-        // 测试的请求地址，用于测试会话
+        // 注册的时候判断用户名是否已经存在
         userAlreadyExistUrl: `${host}/useralreadyexist`,
 
         //注册用户接口
         registerUrl: `${host}/register`,
 
-        //修改用户信息接口
+        //向服务器发送 “code”
         uploadCodeUrl: `${host}/uploadcode`,
         
         //修改活动信息

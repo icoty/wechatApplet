@@ -41,6 +41,19 @@ width: 750rpx;
   color: #574545;
   font-size: 14px;
 }
+
+.section_gender_title{
+  flex: block;
+  flex-direction:row;
+  float:right;
+  text-align: left;
+  margin-right: 52%;
+  margin-bottom: 11px;
+  margin-top: 5px;
+  color: #574545;
+  font-size: 14px;
+}
+
 .namelmage,.keylmage{
   margin-left: 22px;
   width: 14px;

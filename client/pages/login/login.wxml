@@ -8,7 +8,7 @@
     <view class="inputView">
         <image class='namelmage' src='../../images/index.png'></image>
         <label class='loginLab'>账号</label>
-        <input class='inputText' bindinput='inputName' placeholder='请输入学号' name='username' type='text'/>
+        <input class='inputText' bindinput='inputName' placeholder='请输入学号' name='usernumber' type='text'/>
         <view class='line'></view>
 
         <view class="inputView">

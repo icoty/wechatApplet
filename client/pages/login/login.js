@@ -3,18 +3,18 @@ const app = getApp()
 
 Page({
   data: {		//此处定义本页面中的全局变量
-    username: '',
+    usernumber: '',
     password: ''
   },
   inputName: function (e) {	// 用于获取输入的账号
-    this.setData({
-      username: e.detail.value	//将获取到的账号赋值给username变量
-    })
+    if (e.detail.value) {
+      app.globalData.usernumber = e.detail.value
+    }
   },
   inputPwd: function (e) {		// 用于获取输入的密码
-    this.setData({
-      passwd: e.detail.value	//将获取到的账号赋值给passwd变量
-    })
+    if (e.detail.value) {
+      app.globalData.password = e.detail.value
+    }
   },
   reg: function (e) {
     wx.redirectTo({
@@ -22,56 +22,131 @@ Page({
     })
   },
   log: function (e) {
-    if (this.data.username && this.data.password) {
-      wx.setStorageSync("username", this.data.username)
-      wx.request({
-        url: config.service.loginUrl,	//获取服务器地址，此处为本地地址
-        header: {
-          "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
-        },
-        method: "POST",
-        data: {		//向服务器发送的信息
-          username: this.data.username,
-          password: this.data.password
-        },
-        success: function (res) {
-          var result = res.data.resultObj;
-          console.log(res.data);
-          //result=1表示登录成功
-          if (result == 1) {
-            //存储用户名
-            wx.redirectTo({
-              url: '/pages/index/index',
-            })
-            wx.set
-          } else {
-            wx.showModal({
-              title: '温馨提示',
-              content: '用户名或密码错误',
-              showCancel: false,
-              success: function (res) {
-              }
+    wx.login({
+      // 调用 login 获取 code
+      success: function (res) {
+        if (!res.code) {
+          return
+        }
+        console.log(res)
+        var code = res.code;
+
+        // 调用 getUserInfo 获取 encryptedData 和 iv
+        wx.getUserInfo({
+          success: function (res) {
+            console.log(res)
+            app.globalData.userInfo = res.userInfo
+            app.globalData.encryptedData = res.encryptedData
+            app.globalData.iv = res.iv
+
+            if (app.globalData.usernumber && app.globalData.password) {
+              wx.request({
+                url: config.service.loginUrl,
+                header: {
+                  "content-type": 'application/json'		//使用POST方法要带上这个header
+                },
+                //method: "POST",
+                data: {
+                  usernumber: app.globalData.usernumber,
+                  password: app.globalData.password,
+                  code: code,
+                  encryptedData: app.globalData.encryptedData,
+                  iv: app.globalData.iv
+                },
+                success: function (res) {    
+                  console.log("login res:",res)         
+                  if (res.data.code == 0) {
+                    app.globalData.login = true
+                    //app.globalData.token = token
+                    app.globalData.usernumber = res.data.usernumber
+                    app.globalData.username = res.data.username
+                    app.globalData.usergender = res.data.usergender
+                    app.globalData.usermajor = res.data.usermajor
+                    app.globalData.userclass = res.data.userclass
+                    app.globalData.useremail = res.data.useremail
+                    app.globalData.userprivilege = res.data.userprivilege
+
+                    wx.showToast({
+                      title: '登陆成功',
+                      icon: "none",
+                      success: (res) => {
+                      }
+                    })
+                    wx.switchTab({
+                      url: '../userPage/userPage',
+                    })
+                  } else {
+                    wx.showModal({
+                      title: '温馨提示',
+                      content: '用户名或密码错误',
+                      showCancel: false,
+                      success: function (res) {
+                      }
+                    })
+                  }
+                },
+                fail: function (res) {
+                  wx.showToast({
+                    title: '您的网络开小差啦~~~',
+                    icon: "none"
+                  })
+                },
+                complete: function (res) {
+                  console.log('submit complete');
+                }
+              })
+            } else {
+              wx.showToast({
+                title: '请将信息填写完整后提交',
+                icon: "none"
+              })
+            }
+
+            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+            // 所以此处加入 callback 以防止这种情况
+            /*if (this.userInfoReadyCallback) {
+              this.userInfoReadyCallback(res)
+            }*/
+          },
+          fail: function (res) {
+            wx.showToast({
+              title: '获取用户信息失败!',
+              icon: "none"
             })
           }
-          console.log('submit success');
-        },
-        fail: function (res) {
-          wx.showToast({
-            title: '您的网络开小差啦~~~',
-            icon: "none"
-          })
-        },
-        complete: function (res) {
-          console.log('submit complete');
-        }
-      })
-    } else {
-      wx.showToast({
-        title: '请将信息填写完整后提交',
-        icon: "none"
-      })
-    }
+        })
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: 'wx.login fail!',
+          icon: "none"
+        })
+      },
+    })
   },
+    /*
+    // 获取用户信息
+    wx.getSetting({
+      success: res => {
+        console.log("getSetting res: ", res)
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              // 可以将 res 发送给后台解码出 unionId
+              this.globalData.userInfo = res.userInfo
+
+              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+              // 所以此处加入 callback 以防止这种情况
+              if (this.userInfoReadyCallback) {
+                this.userInfoReadyCallback(res)
+              }
+            }
+          })
+        }
+      }
+    })*/
+
   /**
    * 生命周期函数--监听页面加载
    */

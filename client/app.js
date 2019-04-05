@@ -4,60 +4,81 @@ var config = require('./config')
 const app = getApp()
 
 App({
-  onLoad: function() {
-
+  globalData: {
+    userInfo: null,
+    encryptedData: null,
+    iv: null,
+    token: null,
+    usernumber: null,
+    password: null,
+    username: null,
+    usergender: null,
+    usermajor: null,
+    userclass: null,
+    useremail: null,
+    userprivilege: null,
+    passwordFlag: undefined,  // for reg
+    flag: undefined,  // for reg 标示用户名是否可用，1为可用，0为不可用
+    login: false
   },
 
   onLaunch: function (options) {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-    var data = {
-      code: undefined
-    } 
-    wx.login({
-      success: res => {    
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        if (!res.code) {
-          console.log("!res.code is true: ",res)
-          return
-        }
-        //console.log(res)
-        data['code'] = res.code
-        wx.request({
-          url: config.service.uploadCodeUrl,
-          header: {
-            "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
-          },
-          method: "POST",
-          data: data,
-          success: function (res) {
-            if (res.data.code != 200) {
-              console.log("res.data.code not 200:", res)
-              return
-            }
-            
-            //app.globalData.token = res.data.data.token
 
-            wx.redirectTo({
-              url: '/pages/authorization/authorization',
-            })
-          }
-        });
-      }
-    })
   },
-  globalData: {
-      userInfo: null,
-      token: null,
-      task: {
-          code: 0,
-          scene: ''
-      }
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
   },
-  initGlobalTask: function() {
-      this.globalData.task.code = 0
-      this.globalData.task.scene = ''
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
   }
 })

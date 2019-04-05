@@ -35,18 +35,6 @@
 		"miniprogram": {
 			"current": -1,
 			"list": [
-				{
-					"id": 0,
-					"name": "1",
-					//"pathName": "pages/home/home",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "2",
-					//"pathName": "pages/jointCourseInfo/jointcourseinfo",
-					"query": ""
-				}
 			]
 		}
 	}

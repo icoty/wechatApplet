@@ -29,27 +29,21 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function (e) {
-  },
 
-  onShareAppMessage(e) {
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData)
 
   },
-  /**
- * 生命周期函数--监听页面显示
- */
-  onShow: function () {
-    var that = this
 
-    if (app.globalData.userInfo) {
-      that.getCourseList()
-    }
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
   }
 
 })

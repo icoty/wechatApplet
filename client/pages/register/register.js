@@ -2,148 +2,128 @@ var config = require('../../config')
 const app = getApp()
 
 Page({
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    usernumber: undefined,
-    username: undefined,
-    usergender: undefined,
-    usermajor: undefined,
-    userclass: undefined,
-    username: undefined,
-    useremail: undefined,
-    password1: undefined,
-    password2: undefined,
-    passwordFlag: undefined,
-    //标示用户名是否可用，1为可用，0为不可用
-    flag: undefined,
-    array: ['男', '女'],
-    genderArray: [
-      {
-        id: 0,
-        name: '男'
-      },
-      {
-        id: 1,
-        name: '女'
-      },
-    ],
-    index: 0
-  },
-  inputNumber: function (e) {	// 用于获取输入的账号
+
+  inputNumber: function (e) {
     if (e.detail.value) {
-      this.setData({
-        usernumber: e.detail.value	//将获取到的账号赋值给username变量
-      })
+      app.globalData.usernumber = e.detail.value
     
-      var currentFlag = 1;
-      var that = this;
+      let that = this
       wx.request({
         url: config.service.userAlreadyExistUrl,
         header: {
           'content-type': 'application/json'
         },
-        method: "POST",
-        data: {		//向服务器发送的信息
-          usernumber: this.data.usernumber,
-        },      
+        method: "GET",
+        data: {
+          usernumber: app.globalData.usernumber
+        },
         success: function (res) {
-          if (res.data.resultObj == 1) {
+          if (res.data.code == 0) {
             //用户名可用
-            currentFlag = 1
             that.setData({
-              flag: currentFlag
+              flag: 1
             })
           } else {
             //用户名非法（已经在数据库中存在）
-            currentFlag = 0
             wx.showToast({
               title: '该用户名已经被占用',
               icon: "none",
             })
             that.setData({
-              flag: currentFlag
+              flag: 0
             })
           }
+          app.globalData.flag = that.data.flag
+        },
+        fail: function (res) {
+          wx.showToast({
+            title: 'request userAlreadyExistUrl fail!',
+            icon: "none"
+          })
+        },
+        complete: function (res) {
+          console.log('complete');
         }
       })
     } else {
-      this.setData({
-        usernumber: undefined
-      })
+      app.globalData.usernumber = undefined
     }
   },
   inputName: function (e) {	// 用于获取输入的账号
     if (e.detail.value) {
-      this.setData({
-        username: e.detail.value	//将获取到的账号赋值给username变量
-      })
+      app.globalData.username = e.detail.value	//将获取到的账号赋值给username变
     }
   },
-  bindPickerChange(e) {
+  bindPickerChangeGender(e) {
     if (e.detail.value) {
       this.setData({
-        index: e.detail.value,
-        usergender : this.data.array[this.data.index]
+        gindex: e.detail.value,
       })
+      app.globalData.usergender = this.data.gindex
     }
   },
-  inputGender: function (e) {		// 用于获取输入的密码
-    /*console.log(e)
-    this.setData({
-      usergender: e.detail.value,	//将获取到的账号赋值给passwd变量
+  inputGender: function (e) {
+    console.log(e)
+    /*this.setData({
+      usergender: e.detail.value
     })*/
+    //app.globalData.usergender = this.data.gindex
   },
-  inputMajor: function (e) {	// 用于获取输入的账号
+  bindPickerChangeClass(e) {
     if (e.detail.value) {
       this.setData({
-        usermajor: e.detail.value	//将获取到的账号赋值给username变量
+        cindex: e.detail.value,
       })
+      app.globalData.userclass = this.data.carray[this.data.cindex]
     }
   },
-  inputClass: function (e) {	// 用于获取输入的账号
+  inputClass: function (e) {
+    /*if (e.detail.value) {
+      app.globalData.userclass = e.detail.value
+    }*/
+  },
+  bindPickerChangeMajor(e) {
     if (e.detail.value) {
       this.setData({
-        userclass: e.detail.value	//将获取到的账号赋值给username变量
+        mindex: e.detail.value,
       })
+      app.globalData.usermajor = this.data.marray[this.data.mindex]
     }
   },
-  inputEmail: function (e) {	// 用于获取输入的账号
+  inputMajor: function (e) {
+    /*if (e.detail.value) {
+      app.globalData.usermajor = e.detail.value
+    }*/
+  },
+  inputEmail: function (e) {
     if (e.detail.value) {
-      this.setData({
-        useremail: e.detail.value	//将获取到的账号赋值给username变量
-      })
+      app.globalData.useremail = e.detail.value
     }
   },
-  inputPwd1: function (e) {		// 用于获取输入的密码
+  inputPwd1: function (e) {
     if (e.detail.value) {
-      this.setData({
-        password1: e.detail.value	//将获取到的账号赋值给passwd变量
-      })
+      this.data.password1 = e.detail.value
     }
   },
-  inputPwd2: function (e) {		// 用于获取输入的密码
+  inputPwd2: function (e) {
     if (e.detail.value) {
-      this.setData({
-        password2: e.detail.value
-      })
-      var currentFlag = 1
-      var that = this;
+      this.data.password2 = e.detail.value
+
       if (this.data.password2 != this.data.password1) {
         wx.showToast({
-          title: '两次密码不一致',
+          title: '两次输入的密码不一致',
           icon: "none"
         })
-        currentFlag = 0
-        that.setData({
+        this.setData({
           passwordFlag: 0
         })
       } else {
-        that.setData({
+        this.setData({
           passwordFlag: 1
         })
+        app.globalData.password = this.data.password1
       }
+      app.globalData.passwordFlag = this.data.passwordFlag
     }
   },
   log: function (e) {
@@ -152,58 +132,106 @@ Page({
     })
   },
   reg: function () {
-    if (this.data.usernumber && this.data.username && this.data.usergender && this.data.usermajor && this.data.userclass && this.data.usermajor && this.data.useremail && this.data.password1 && this.data.password2) {
-      if (!this.data.flag) {
-        wx.showToast({
-          title: '用户名已经被占用，请修改',
-          icon: "none"
-        })
-      } else if (!this.data.passwordFlag) {
-        wx.showToast({
-          title: '两次密码不一致',
-          icon: "none"
-        })
-      }
-      else {
-        wx.showToast({
-          title: '注册成功',
-          success: (res) => {
-            wx.redirectTo({
-              url: '/pages/login/login',
-            })
-          }
-        })
-        wx.request({
-          url: registerUrl,
-          data: {
-            usernumber: this.data.usernumber,
-            username: this.data.username,
-            usergender: this.data.usergender,
-            usermajor: this.data.usermajor,
-            userclass: this.data.userclass,
-            useremail: this.data.useremail,
-            password1: this.data.password1,
-            password2: this.data.password2,
-          },
-          method: "POST",
-          header: {
-            "Content-Type": "application/json"
-          },
+    wx.login({
+      // 调用 login 获取 code
+      success: function (res) {
+        if (!res.code) {
+          return
+        }
+        console.log(app.globalData)
+        var code = res.code
+        // 调用 getUserInfo 获取 encryptedData 和 iv
+        wx.getUserInfo({
           success: function (res) {
-            console.log(res)
-            wx.redirectTo({
-              url: '../index/index',
+            app.globalData.userInfo = res.userInfo
+            app.globalData.encryptedData = res.encryptedData
+            app.globalData.iv = res.iv
+            if (app.globalData.usernumber && app.globalData.username && app.globalData.usergender && app.globalData.usermajor && app.globalData.userclass && app.globalData.useremail && app.globalData.password) {
+              if (!app.globalData.flag) {
+                wx.showToast({
+                  title: '用户名已经被占用，请修改',
+                  icon: "none"
+                })
+              } else if (!app.globalData.passwordFlag) {
+                wx.showToast({
+                  title: '两次密码不一致',
+                  icon: "none"
+                })
+              } else {
+                wx.request({
+                  url: config.service.registerUrl,
+                  data: {
+                    usernumber: app.globalData.usernumber,
+                    username: app.globalData.username,
+                    usergender: app.globalData.usergender,
+                    usermajor: app.globalData.usermajor,
+                    userclass: app.globalData.userclass,
+                    useremail: app.globalData.useremail,
+                    password: app.globalData.password,
+                    encryptedData: app.globalData.encryptedData,
+                    iv: app.globalData.iv,
+                    code: code
+                  },
+                  //method: "POST",
+                  header: {
+                    "Content-Type": "application/json"
+                  },
+                  success: function (res) {
+                    if (res.data.code == 0) {
+                      app.globalData.login = true
+                      wx.showToast({
+                        title: '注册成功',
+                        success: (res) => {
+
+                        }
+                      })
+                      wx.switchTab({
+                        url: '../userPage/userPage',
+                      })
+                    } else {
+                      /*for (let key in app.globalData) {
+                        app.globalData[key] = ''
+                      }*/              
+                      wx.showToast({
+                        title: '注册失败,请重新注册！',
+                        icon: "none",
+                      })
+                    }
+                  },
+                  fail: function (res) {
+                    wx.showToast({
+                      title: '您的网络开小差啦~~~',
+                      icon: "none"
+                    })
+                  },
+                  complete: function (res) {
+                    console.log('submit complete');
+                  }
+                })
+              }
+            } else {
+              wx.showModal({
+                title: '提示',
+                content: '请将信息填写完整后提交',
+                showCancel: false
+              })
+            }
+          },
+          fail: function (res) {
+            wx.showToast({
+              title: '获取用户信息失败!',
+              icon: "none"
             })
           }
         })
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: 'wx.login fail',
+          icon: "none"
+        })
       }
-    } else {
-      wx.showModal({
-        title: '提示',
-        content: '请将信息填写完整后提交',
-        showCancel: false
-      })
-    }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -259,5 +287,83 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    password1: undefined,
+    password2: undefined,
+    passwordFlag: undefined,
+    //标示用户名是否可用，1为可用，0为不可用
+    flag: undefined,
+    garray: ['女', '男'],
+    gArray: [
+      {
+        id: 0,
+        name: '女'
+      },
+      {
+        id: 1,
+        name: '男'
+      },
+    ],
+    gindex: 1,
+    carray: ['未名一', '未名二', '博雅一', '博雅二', '朗润一', '朗润二'],
+    cArray: [
+      {
+        id: 0,
+        name: '未名一苑'
+      },
+      {
+        id: 1,
+        name: '未名二苑'
+      },
+      {
+        id: 2,
+        name: '博雅一苑'
+      },
+      {
+        id: 3,
+        name: '博雅二苑'
+      },
+      {
+        id: 4,
+        name: '朗润一苑'
+      },
+      {
+        id: 5,
+        name: '朗润二苑'
+      },
+    ],
+    cindex: 0,
+    marray: ['软件工程', '计算机技术', 'CAT', '云计算', '金融学', '金融与大数据'],
+    mArray: [
+      {
+        id: 0,
+        name: '软件工程'
+      },
+      {
+        id: 1,
+        name: '计算机技术'
+      },
+      {
+        id: 2,
+        name: 'CAT'
+      },
+      {
+        id: 3,
+        name: '云计算'
+      },
+      {
+        id: 4,
+        name: '金融学'
+      },
+      {
+        id: 5,
+        name: '金融与大数据'
+      },
+    ],
+    mindex: 0,
+  },
 })

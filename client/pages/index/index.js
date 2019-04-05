@@ -23,15 +23,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function (e) {
+    
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function (e) {
-  },
 
-  onShareAppMessage(e) {
   },
 
   /**
@@ -45,11 +44,7 @@ Page({
  * 生命周期函数--监听页面显示
  */
   onShow: function () {
-    var that = this
 
-    if (app.globalData.userInfo) {
-      that.getCourseList() 
-    }
   }
 
-  })
+})

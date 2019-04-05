@@ -13,23 +13,31 @@
         <view class='line'></view>
 
         <view class="section">
-          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <picker bindchange="bindPickerChangeGender" value="{{gindex}}" range="{{garray}}">
           <image class='namelmage' src='../../images/index.png'></image>
           <label class='loginLab'>性别</label>
-          <input class='inputText' bindinput='inputGender' placeholder="{{array[index]}}" name='usergender'/>
+          <input class='inputText' bindinput='inputGender' placeholder="{{garray[gindex]}}" name='usergender'/>
           <view class='line'></view>
           </picker>
         </view>
 
-        <image class='namelmage' src='../../images/index.png'></image>
-        <label class='loginLab'>专业</label>
-        <input class='inputText' bindinput='inputMajor' placeholder='请选择专业' name='usermajor'/>
-        <view class='line'></view>
+        <view class="section">
+          <picker bindchange="bindPickerChangeMajor" value="{{mindex}}" range="{{marray}}">
+          <image class='namelmage' src='../../images/index.png'></image>
+          <label class='loginLab'>专业</label>
+          <input class='inputText' bindinput='inputMajor' placeholder="{{marray[mindex]}}" name='usermajor'/>
+          <view class='line'></view>
+          </picker>
+        </view>
         
-        <image class='namelmage' src='../../images/index.png'></image>
-        <label class='loginLab'>班级</label>
-        <input class='inputText' bindinput='inputClass' placeholder='请选择班级' name='userclass'/>
-        <view class='line'></view>
+        <view class="section">
+          <picker bindchange="bindPickerChangeClass" value="{{cindex}}" range="{{carray}}">
+          <image class='namelmage' src='../../images/index.png'></image>
+          <label class='loginLab'>班级</label>
+          <input class='inputText' bindinput='inputClass' placeholder="{{carray[cindex]}}" name='userclass'/>
+          <view class='line'></view>
+          </picker>
+        </view>
 
         <image class='keylmage' src='../../images/index.png'></image>
         <label class='loginLab'>Email</label>
