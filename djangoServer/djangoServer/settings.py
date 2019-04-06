@@ -16,6 +16,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+#APPEND_SLASH=False
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -25,7 +27,7 @@ SECRET_KEY = '=*tt6!*bq)v7h80jn628%l(ym9-%ut632v%u44(gx1gr%jyu)='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['45.40.199.171', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['45.40.199.171', '127.0.0.1', '0.0.0.0','www.2belief.com']
 
 
 # Application definition
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'reversion',
     'signSystem',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +129,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+APP_ID = 'wx552a0d4b18e3f9e7'
+APP_KEY = '1a2667e5a3c5528bfe34251fd561accb'
+
+JWT_AUTH = {
+    'PAYLOAD_TO_USER': 'user.auth.payload_to_user',
+    'USER_TO_PAYLOAD': 'user.auth.user_to_payload',
+}
