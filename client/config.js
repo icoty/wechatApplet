@@ -2,15 +2,6 @@
  * 小程序配置文件
  */
 
-// 此处主机域名修改成腾讯云解决方案分配的域名
-// var host = 'https://9zjv84ez.qcloud.la';
-
-// var host = 'http://localhost:5757';
-
-// 服务器
-//var host = 'https://www.ezoul.net'
-
-
 // 服务器
 var host = 'https://www.2belief.com'
 
@@ -28,63 +19,39 @@ var config = {
 
         //注册用户接口
         registerUrl: `${host}/register`,
-
-        //向服务器发送 “code”
-        uploadCodeUrl: `${host}/uploadcode`,
         
+        //创建活动信息
+        addActivityUrl: `${host}/addactivity`,
+      
         //修改活动信息
-        updateCourseInfoUrl: `${host}/weapp/changecourse`,
-
-        //获取用户所有活动列表
-        getCourseListUrl: `${host}/weapp/getcourselist`,
-        
-        //根据活动id查询活动简略信息
-        searchCourseUrl: `${host}/weapp/searchcourse`,
-
-        //根据活动id查询活动详细信息
-        searchCourseDetailUrl: `${host}/weapp/serchcoursedetail`,
-
-        //加入活动
-        joinCourseUrl: `${host}/weapp/joincourse`,
-
-        //创建活动
-        createCourseUrl: `${host}/weapp/createcourse`,
-
-        //根据活动id获取已加入活动的信息
-        getJointCourseRecordUrl: `${host}/weapp/getjointcoursedetail`,
-
-        //根据活动id获取可管理的活动详细信息
-        getCreatededCourseRecordUrl: `${host}/weapp/getcreatedcourserecord`,
+        modifyActivityUrl: `${host}/modifyactivity`,
 
         //删除活动
-        deleteCourseUrl: `${host}/weapp/deletecourse`,
+        deleteActivityUrl: `${host}/deleteactivity`,
+
+        //获取用户已经参加过的所有活动
+        getAttendUrl: `${host}/weapp/get_attend`,
+      
+        //获取用户缺席的所有活动
+        getAbsencetUrl: `${host}/get_absence`,
+     
+        //获取用户已报名但尚未开始的所有活动
+        getSignUrl: `${host}/get_sign`,
+
+        //根据活动id查询活动详细信息
+        getActivityByIdUrl: `${host}/getactivitybyid`,
+
+        //根据活动id查询学生列表
+        getStuListByIdUrl: `${host}/getstudentlistbyid`,
 
         //发布签到
-        submitSignInUrl: `${host}/weapp/submitsignin`,
+        submitSignInUrl: `${host}/submitsignin`,
 
         //进行签到
-        signInUrl: `${host}/weapp/signin`,
-
-        //获取签到详细信息
-        getSignInDetailUrl: `${host}/weapp/getsignindetail`,
-      
-        //获取成员列表
-        getMembersListUrl: `${host}/weapp/getmemberslist`,
-
-        //删除成员
-        deleteMemberUrl: `${host}/weapp/deleteMember`,
-
-        //修改成员权限
-        changeLevelUrl: `${host}/weapp/changelevel`,
+        signInUrl: `${host}/signin`,
 
         //获取活动二维码
-        getCourseQRUrl: `${host}/weapp/getCourseQR`,
-
-        //退出活动
-        quitCourseUrl: `${host}/weapp/quitCourse`,
-
-        //获取邮件
-        getExcelUrl: `${host}/weapp/getExcel`
+        getCourseQRUrl: `${host}/getCourseQR`,
     }
 };
 
