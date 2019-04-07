@@ -5,7 +5,7 @@ from django.db import models
 class User(models.Model):
     gender_level = ((0, '女'), (1, '男'))
     privilege_level = ((0, '普通'), (1, '管理员'))
-    class_level = ((0, '未名一苑'), (1, '未名二苑'),(2, '博雅一苑'), (3, '博雅二苑'),(4, '朗润一苑'), (5, '朗润二苑'))
+    class_level = (('未名一苑'), ('未名二苑'),('博雅一苑'), ('博雅二苑'),('朗润一苑'), ('朗润二苑'))
     major_level = ((0, '软件工程'), (1, '计算机技术'),(2, 'CAT'), (3, '云计算'),(4, '金融学'), (5, '金融与大数据'))
 
     u_number     = models.IntegerField(primary_key=True, verbose_name="学号")
