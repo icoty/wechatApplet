@@ -21,7 +21,7 @@ Page({
           if (res.data.code == 0) {
             //用户名可用
             that.setData({
-              flag: 1
+              uflag: 1
             })
           } else {
             //用户名非法（已经在数据库中存在）
@@ -30,10 +30,10 @@ Page({
               icon: "none",
             })
             that.setData({
-              flag: 0
+              uflag: 0
             })
           }
-          app.globalData.flag = that.data.flag
+          app.globalData.uflag = that.data.uflag
         },
         fail: function (res) {
           wx.showToast({
@@ -98,6 +98,47 @@ Page({
   inputEmail: function (e) {
     if (e.detail.value) {
       app.globalData.useremail = e.detail.value
+
+      /*let that = this
+      wx.request({
+        url: config.service.userEmailExistUrl,
+        header: {
+          'content-type': 'application/json'
+        },
+        method: "GET",
+        data: {
+          useremail: app.globalData.useremail
+        },
+        success: function (res) {
+          if (res.data.code == 0) {
+            //邮箱可用
+            that.setData({
+              eflag: 1
+            })
+          } else {
+            //邮箱已经被占用（已经在数据库中存在）
+            wx.showToast({
+              title: '该邮箱已经被占用',
+              icon: "none",
+            })
+            that.setData({
+              eflag: 0
+            })
+          }
+          app.globalData.eflag = that.data.eflag
+        },
+        fail: function (res) {
+          wx.showToast({
+            title: 'request userAlreadyExistUrl fail!',
+            icon: "none"
+          })
+        },
+        complete: function (res) {
+          console.log('complete');
+        }
+      })*/
+    } else {
+      app.globalData.useremail = undefined
     }
   },
   inputPwd1: function (e) {
@@ -147,12 +188,17 @@ Page({
             app.globalData.encryptedData = res.encryptedData
             app.globalData.iv = res.iv
             if (app.globalData.usernumber && app.globalData.username && app.globalData.usergender && app.globalData.usermajor && app.globalData.userclass && app.globalData.useremail && app.globalData.password) {
-              if (!app.globalData.flag) {
+              if (!app.globalData.uflag) {
                 wx.showToast({
                   title: '用户名已经被占用，请修改',
                   icon: "none"
                 })
-              } else if (!app.globalData.passwordFlag) {
+              }/* else if (!app.globalData.eflag) {
+                wx.showToast({
+                  title: '邮箱已经被占用，请修改',
+                  icon: "none"
+                })
+              } */else if (!app.globalData.passwordFlag) {
                 wx.showToast({
                   title: '两次密码不一致',
                   icon: "none"
@@ -177,7 +223,20 @@ Page({
                     "Content-Type": "application/json"
                   },
                   success: function (res) {
-                    if (res.data.code == 0) {
+                    if (res.data.code == -1) {
+                      /*for (let key in app.globalData) {
+                        app.globalData[key] = ''
+                      }*/              
+                      wx.showToast({
+                        title: '注册失败,请重新注册！',
+                        icon: "none",
+                      })
+                    } else if (res.data.code == -2) {
+                      wx.showToast({
+                        title: '该微信号已经绑定过其他用户,请解绑再注册!',
+                        icon: "none",
+                      })
+                    }else /* if (res.data.code == 0)*/ {
                       app.globalData.login = true
                       wx.showToast({
                         title: '注册成功',
@@ -187,14 +246,6 @@ Page({
                       })
                       wx.switchTab({
                         url: '../userPage/userPage',
-                      })
-                    } else {
-                      /*for (let key in app.globalData) {
-                        app.globalData[key] = ''
-                      }*/              
-                      wx.showToast({
-                        title: '注册失败,请重新注册！',
-                        icon: "none",
                       })
                     }
                   },
@@ -294,9 +345,9 @@ Page({
   data: {
     password1: undefined,
     password2: undefined,
-    passwordFlag: undefined,
-    //标示用户名是否可用，1为可用，0为不可用
-    flag: undefined,
+    passwordFlag: undefined, // 标示二次输入密码是否一致，1为可用，0为不可用
+    uflag: undefined, // 标示用户名是否可用，1为可用，0为不可用
+    eflag: undefined, // 标示邮箱是否可用，1为可用，0为不可用
     garray: ['女', '男'],
     gArray: [
       {

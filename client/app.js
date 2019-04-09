@@ -17,8 +17,9 @@ App({
     userclass: null,
     useremail: null,
     userprivilege: null,
-    passwordFlag: undefined,  // for reg
-    flag: undefined,  // for reg 标示用户名是否可用，1为可用，0为不可用
+    passwordFlag: undefined,  // 标示二次输入密码是否一致，1为可用，0为不可用
+    uflag: undefined, // 标示用户名是否可用，1为可用，0为不可用
+    eflag: undefined, // 标示邮箱是否可用，1为可用，0为不可用
     login: false
   },
 

@@ -55,7 +55,23 @@ Page({
                 },
                 success: function (res) {    
                   console.log("login res:",res)         
-                  if (res.data.code == 0) {
+                  if (res.data.code == -2) {
+                    wx.showModal({
+                      title: '温馨提示',
+                      content: '用户名与微信号不匹配',
+                      showCancel: false,
+                      success: function (res) {
+                      }
+                    })
+                  } else if (res.data.code == -1) {
+                    wx.showModal({
+                      title: '温馨提示',
+                      content: '用户名或密码错误',
+                      showCancel: false,
+                      success: function (res) {
+                      }
+                    })                 
+                  }else /*(res.data.code == 0)*/ {
                     app.globalData.login = true
                     //app.globalData.token = token
                     app.globalData.usernumber = res.data.usernumber
@@ -74,14 +90,6 @@ Page({
                     })
                     wx.switchTab({
                       url: '../userPage/userPage',
-                    })
-                  } else {
-                    wx.showModal({
-                      title: '温馨提示',
-                      content: '用户名或密码错误',
-                      showCancel: false,
-                      success: function (res) {
-                      }
                     })
                   }
                 },
