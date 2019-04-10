@@ -22,6 +22,10 @@ Page({
     })
   },
   log: function (e) {
+
+
+
+
     wx.login({
       // 调用 login 获取 code
       success: function (res) {
@@ -118,7 +122,7 @@ Page({
           },
           fail: function (res) {
             wx.showToast({
-              title: '获取用户信息失败!',
+              title: '你未授权，获取用户信息失败!',
               icon: "none"
             })
           }

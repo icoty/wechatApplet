@@ -1,9 +1,10 @@
 {
   "pages": [
-      "pages/index/index",
-      "pages/login/login",
-      "pages/userPage/userPage",
-      "pages/register/register"
+    "pages/authorization/authorization",
+    "pages/index/index",
+    "pages/login/login",
+    "pages/userPage/userPage",
+    "pages/register/register"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
