@@ -46,7 +46,7 @@ width: 750rpx;
   flex: block;
   flex-direction:row;
   float:right;
-  text-align: left;
+  text-align: center;
   margin-right: 52%;
   margin-bottom: 11px;
   margin-top: 5px;
