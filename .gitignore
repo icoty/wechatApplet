@@ -2,3 +2,9 @@
 .idea/
 wechatApplet.iml
 djangoServer/uwsgi/logs/
+djangoServer/nohup.out
+djangoServer/djangoServer/__pycache__/
+djangoServer/uwsgi/uwsgi.pid
+djangoServer/signSystem/migrations
+
+

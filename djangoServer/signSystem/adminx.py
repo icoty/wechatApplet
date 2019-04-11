@@ -23,7 +23,7 @@ class Act2StuResource(resources.ModelResource):
     class Meta:
         model = Act2Stu
         exclude = ('a2s_num',)
-        exclude = ('id',)
+        # exclude = ('id',)
         import_id_fields = ['a2s_num', 'ats_stunum', 'a2s_signtime', 'a2s_signup']
         # import_id_fields = ['活动ID','学号' ,'签到时间','是否报名']  
         
@@ -33,9 +33,9 @@ class UserAdmin(object):
     import_export_args = {'import_resource_class': UserResource,'export_resource_class': UserResource}
     
     list_display = ['u_number','u_name' ,'u_gender','u_privilege','u_class','u_major','u_email']
-    search_fields = ['u_number','u_name' ,'u_gender','u_privilege','u_class','u_major','u_password','u_email','u_openid']
-    list_editable = ['u_number','u_name' ,'u_gender','u_privilege','u_class','u_major','u_password','u_email','u_openid']
-    list_filter   = ['u_number','u_name' ,'u_gender','u_privilege','u_class','u_major','u_password','u_email','u_openid']
+    search_fields = ['u_number','u_name' ,'u_gender','u_privilege','u_class','u_major','u_email']
+    list_editable = ['u_name' ,'u_gender','u_privilege','u_class','u_major']
+    list_filter   = ['u_number','u_name' ,'u_gender','u_privilege','u_class','u_major','u_email']
     
     def u_gender(self):
         if self.u_gender:

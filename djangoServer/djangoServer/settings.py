@@ -85,8 +85,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': "pku_sm_activity_man",
 	'USER': 'root',
-	'PASSWORD': 'ruanwei',
-	'HOST': 'localhost',
+	'PASSWORD': 'root',
+	'HOST': '127.0.0.1',
 	'PORT': '3306',
     }
 }
@@ -114,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'zh-Hans'
+LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'Asia/Shanghai'
 

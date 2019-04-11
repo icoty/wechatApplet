@@ -22,6 +22,15 @@ def uploadcode(request):
     return HttpResponse("uploadcode")
 
 
+def userEmailExist(request):
+    useremail = request.GET.get('useremail')
+    try:
+        user = User.objects.get(u_email=useremail)
+    except Exception:
+        return JsonResponse({'message': 'success', 'code': '0'})
+    return JsonResponse({'message': '邮箱已经被占用', 'code': '-1'})
+
+
 def userAlreadyExist(request):
     usernumber = request.GET.get('usernumber')
     print(usernumber)
@@ -58,13 +67,19 @@ def register(request):
     
     if not openid:
         return JsonResponse({'message': 'server request openid fail!', 'code': '-1'})
-    
+
     try:
-        user = User.objects.get(u_number=usernumber)
+        # user = User.objects.get(u_number=usernumber) 注册的时候已经异步检测, 这里不需要检测
+        user1 = User.objects.get(u_openid=openid)
     except Exception:
-        user = User.objects.create(u_number=usernumber, u_gender=usergender, u_name=username,u_class=userclass, u_major=usermajor, u_email=useremail,u_privilege=userprivilege, u_openid=openid,u_password=password)
-        return JsonResponse({'message': 'success', 'code': '0'})
-    return JsonResponse({'message': '用户已经存在', 'code': '-1'})
+        try:
+            # user = User.objects.get(u_number=usernumber) 注册的时候已经异步检测, 这里不需要检测
+            user = User.objects.get(u_email=useremail)
+        except Exception:
+            user = User.objects.create(u_number=usernumber, u_gender=usergender, u_name=username,u_class=userclass, u_major=usermajor, u_email=useremail,u_privilege=userprivilege, u_openid=openid,u_password=password)
+            return JsonResponse({'message': 'success', 'code': '0'})
+        return JsonResponse({'message': '该邮箱已被占用', 'code': '-1'})
+    return JsonResponse({'message': '该微信号已经绑定过其他用户', 'code': '-2'})
 
 
 def login(request):
@@ -94,6 +109,9 @@ def login(request):
     except Exception:
         return JsonResponse({'message': '用户名或密码错误','code': '-1'})
     
+    if user.u_openid != openid:
+        return JsonResponse({'message': '该用户与该微信号不匹配','code': '-2'})
+
     if user.u_password != password:
         return JsonResponse({'message': '用户名或密码错误','code': '-1'})
 

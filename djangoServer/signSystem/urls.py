@@ -3,6 +3,7 @@ from django.urls import path,include
 
 from . import views
 
+app_name ='[signSystem]' 
 urlpatterns = [
     path(r'',views.index),
     path(r'index/',views.index),

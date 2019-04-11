@@ -16,7 +16,7 @@ Including another URLconf
 import xadmin 
 xadmin.autodiscover()
 
-from django.urls import path,include
+from django.urls import path,include,re_path
 from django.contrib import admin
 
 from xadmin.plugins import xversion
