@@ -24,7 +24,7 @@ class Act2StuResource(resources.ModelResource):
         model = Act2Stu
         exclude = ('a2s_num',)
         # exclude = ('id',)
-        import_id_fields = ['a2s_num', 'ats_stunum', 'a2s_signtime', 'a2s_signup']
+        import_id_fields = ['a2s_actnum', 'ats_stunum', 'a2s_signtime', 'a2s_signup']
         # import_id_fields = ['活动ID','学号' ,'签到时间','是否报名']  
         
         

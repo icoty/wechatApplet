@@ -19,8 +19,8 @@ uwsgi --ini uwsgi/uwsgi.ini
 # restart django server
 # ps -ef | grep "8000" | head -n 2 | awk '{print $2}' | xargs kill -9
 
-#nohup python manage.py runserver 0.0.0.0:8000 &
-python manage.py runserver 0.0.0.0:8000
+nohup python manage.py runserver 0.0.0.0:8000 &
+#python manage.py runserver 0.0.0.0:8000
 
 
 
