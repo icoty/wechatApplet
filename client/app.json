@@ -2,6 +2,9 @@
   "pages": [
     "pages/authorization/authorization",
     "pages/index/index",
+    "pages/sign/sign",
+    "pages/attend/attend",
+    "pages/absence/absence",
     "pages/login/login",
     "pages/userPage/userPage",
     "pages/register/register"

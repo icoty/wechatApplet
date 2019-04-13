@@ -18,7 +18,25 @@ Page({
     task_course: [],
     joint_course: [],
     created_course: [],
-    count_down_list: []
+    count_down_list: [],
+    sign_activity:"待参加活动(即将进行)",
+    attend_activity:"已参加活动",
+    absence_activity:"缺席的活动"
+  },
+  jump_sign:function(){
+    wx.navigateTo({
+      url: '../sign/sign',
+    })
+  },
+  jump_attend: function () {
+    wx.navigateTo({
+      url: '../attend/attend',
+    })
+  },
+  jump_absence: function () {
+    wx.navigateTo({
+      url: '../absence/absence',
+    })
   },
 
   onLoad() {
